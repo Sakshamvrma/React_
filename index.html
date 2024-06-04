@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Counter App</title>
+    <script>
+      function onClickButton() {
+        console.log('Button clicked')
+        const innerText = document.getElementById('btn').innerHTML;
+        const currentVal=innerText.split(" ")[1];
+        const newVal=parseInt(currentVal) + 1;
+        document.getElementById("btn").innerHTML="Counter "+ newVal;
+
+      }
+    </script>
+
+  </head>
+  <body>
+    <button id="btn" onClick="onClickButton()">Counter 1</button>
+    </body>
+</html>
+

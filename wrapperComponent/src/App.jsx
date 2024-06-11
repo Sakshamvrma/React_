@@ -1,35 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <CardWrapper >
+      hii there
+      {<TextComponent/>}
+      {<BlueComponent/>}
+    </CardWrapper>
+
+
+      
     </>
   )
+}
+function TextComponent(){
+  return <div style={{backgroundColor:'pink'}}>
+    <h1>This is some random text</h1>
+  </div>
+}
+function BlueComponent(){
+  return <div style={{color:'white',backgroundColor:'purple'}}><h1>The text is in blue and wrapped inside wrapper component</h1></div>
+}
+function CardWrapper({children}){
+  const style={
+    borderRadius: '10px',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+    backgroundColor: '#f8f9fa',
+    padding: '10px',
+    margin:'25px',
+    width:'250px'
+  }
+  console.log(children)
+  return <div style={style}>{children}</div>
+
 }
 
 export default App

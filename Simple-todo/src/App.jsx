@@ -4,18 +4,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [todos, settodos] = useState([
-    {
-      todoTitle: "Learn React",
-      todoDescription: "Learn React by building a simple todo app",
-    },
-    {
-      todoTitle: "Practice DSA",
-      todoDescription: "Binary Search Medium Problems",
-    },
-  ]);
-
-  function onclickHandler() {
+  const [todos, settodos] = useState([]);
+  function addToDo() {
     settodos([
       ...todos,
       {
@@ -25,7 +15,7 @@ function App() {
     ]);}
     return (
       <div>
-        <button onClick={onclickHandler}>Add a Todo</button>
+        <button onClick={addToDo}>Add a Todo</button>
         {todos.map(function (todo) {
           return (
             <ToDos
@@ -42,8 +32,14 @@ function App() {
         <div>
           <h1>{props.todoTitle}</h1>
           <p>{props.todoDescription}</p>
+          <Dummybutton></Dummybutton>
+          {/* /*it does not take any props as input yet it re renders because the parent component re renders */ }
         </div>
       );
+    }
+    function Dummybutton(){
+      console.log("re-rendered Dummy Button")
+      return <button>Remove ToDo</button>
     }
   
 

@@ -1,0 +1,38 @@
+import { useMemo, useState } from "react";
+
+// In this assignment, your task is to create a component that performs an expensive calculation (finding the factorial) based on a user input.
+// Use useMemo to ensure that the calculation is only recomputed when the input changes, not on every render.
+
+export function Assignment1() {
+  const [count, setCount] = useState(0);
+  const [input, setInput] = useState(0);
+
+  // Your solution starts here
+  const expensiveValue = useMemo(() => {
+    console.log("rendered")
+    let ans = 1;
+    for (let i = 1; i <= input; i++) {
+      ans *= i;
+    }
+    return ans;
+  }, [input]);
+  // Your solution ends here
+  function handler() {
+    console.log("button clicked")
+    setCount((prevCount) => prevCount + 1);
+  }
+
+  return (
+    <div>
+      <input
+        type="number"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <p>Calculated Value: {expensiveValue}</p>
+      <button onClick={handler}>
+        Count is {count}
+      </button>
+    </div>
+  );
+}

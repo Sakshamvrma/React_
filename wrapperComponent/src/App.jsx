@@ -26,7 +26,7 @@ function BlueComponent(){
 }
 function CardWrapper({children}){
   const style={
-    borderRadius: '10px',
+    borderRadius: '11px',
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
     backgroundColor: '#f8f9fa',
     padding: '10px',

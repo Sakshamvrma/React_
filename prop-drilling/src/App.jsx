@@ -1,26 +1,41 @@
-import { useState } from 'react'
+import { useState ,useContext} from 'react'
+import { CountContext } from './context'
 
 
 function App() {
   const [count, setCount] = useState(0)
 
+  //wrap that componrnt that needs to use the teleported valaue inside the provider
+
   return (
+    <CountContext.Provider value={{count,setCount}}>
     <div>
-      <Count count={count}  setCount={setCount}/>
+      <Count />
     </div>
+    </CountContext.Provider >
   )
 }
-function Count({count,setCount}){
+function Count(){
   
   return (
     <div>
-    {count}
-    <Buttons setCount={setCount} count={count}/>
+    <CountRenderer />
+    <Buttons />
   </div>
  
   )
 }
-function Buttons({setCount,count}){
+function CountRenderer(){
+  const {count} =useContext(CountContext);
+  
+  return (
+    <div>
+      {count}
+    </div>
+  )
+}
+function Buttons(){
+  const {setCount,count} = useContext(CountContext)
   return (
     <div>
     <button onClick={()=>{setCount(count+1)}}>Increment</button>

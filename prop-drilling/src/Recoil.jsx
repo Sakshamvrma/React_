@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRecoilValue, useRecoilState, RecoilRoot, useSetRecoilState } from 'recoil';
 import { countAtom } from './store/atoms/count';
+import { evenSelector } from './store/atoms/count';
 
 const Recoil = () => {
   return (
@@ -20,10 +21,14 @@ function Count(){
 
 function CounterRender(){
   const count = useRecoilValue(countAtom);
+  const isEven = useRecoilValue(evenSelector); // Correctly use the selector with useRecoilValue
   
   return <div>
     {count}
-  </div>
+    {/* {count%2===0 && (<div>It is Even</div>)} */}
+    {isEven && (<div>It is Even</div>)}
+      </div>
+  
 }
 
 function Button(){
